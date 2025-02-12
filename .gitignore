@@ -1,0 +1,34 @@
+# Ignore Python virtual environments
+venv/
+venv_py310/
+# Ignore all virtual environments that start with "venv"
+venv*/
+# Ignore Python cache files
+__pycache__/
+*.pyc
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore datasets
+datasets/
+
+# Ignore model files
+models/*.h5
+*.h5
+
+# Ignore TensorFlow/Keras logs
+logs/
+logs/**/*.tfevents
+
+# Ignore validation and training logs specifically
+logs/lung_cancer_model/train/
+logs/lung_cancer_model/validation/
+
+# to exclude specific logs while keeping some others, customize:
+logs/lung_cancer_model/train/*
+logs/lung_cancer_model/validation/*
+
+# Ignore temporary or generated files (optional)
+*.log
+*.tmp
