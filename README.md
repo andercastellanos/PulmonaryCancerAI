@@ -10,4 +10,4 @@ A project to classify lung cancer cases into benign, malignant, or normal using 
 ## How to Run
 1. Set up a virtual environment.
 2. Install dependencies from `requirements.txt`.
-3. Run `src/train.py` to train the model.
+3. Run `src/cnn.py` to train the model.
