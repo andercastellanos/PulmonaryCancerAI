@@ -418,9 +418,9 @@ if __name__ == "__main__":
     plt.xlabel('Predicted')
     plt.ylabel('True')
     plt.title('Confusion Matrix')
-    plt.savefig('confusion_matrix_improved_cnn.png')
+    plt.savefig('outputs/confusion_matrix_improved2_cnn.png')
     plt.close()
-    print("Confusion matrix saved as confusion_matrix_improved_cnn.png")
+    print("Confusion matrix saved as confusion_matrix_improved2_cnn.png")
 
     # Plot and save the training history
     plt.figure(figsize=(15, 5))
@@ -439,6 +439,6 @@ if __name__ == "__main__":
     plt.ylabel('Loss')
     plt.legend()
     plt.tight_layout()
-    plt.savefig('training_history_custom_cnn.png')
+    plt.savefig('outputs/training_history_custom2_cnn.png')
     plt.close()
     print("Training history plot saved as training_history_custom_cnn.png")
