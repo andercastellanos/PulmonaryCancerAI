@@ -7,7 +7,6 @@ training/validation/test sets, creates image generators with
 data augmentation and a preprocessing function, builds a custom
 CNN model, and trains the model using the training data.
 
-Note: This script is adapted from a Jupyter Notebook example.
 """
 
 import os

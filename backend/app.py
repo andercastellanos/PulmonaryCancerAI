@@ -66,5 +66,38 @@ def predict():
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
+@app.route("/save_scan", methods=["POST"])
+def save_scan():
+    if "file" not in request.files:
+        return jsonify({"status": "error", "message": "No file provided"}), 400
+        
+    file = request.files["file"]
+    patient_id = request.form.get("patient_id")  # This will be your Firebase patient ID
+    
+    # Create directory if it doesn't exist
+    patient_dir = os.path.join("patient_data", patient_id)
+    os.makedirs(patient_dir, exist_ok=True)
+    
+    # Save file with timestamp
+    timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+    filename = f"{timestamp}_{secure_filename(file.filename)}"
+    file_path = os.path.join(patient_dir, filename)
+    file.save(file_path)
+    
+    # Process image and get prediction
+    image = Image.open(file_path)
+    processed_image = preprocess_image(image)
+    prediction = model.predict(processed_image)
+    predicted_class = int(np.argmax(prediction, axis=1)[0])
+    
+    # Return the prediction and file path
+    return jsonify({
+        "status": "success",
+        "prediction": predicted_class,
+        "confidence": prediction.tolist(),
+        "file_path": file_path
+    })
+
+
 if __name__ == "__main__":
     app.run(debug=True, port=3000)
